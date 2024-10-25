@@ -17,7 +17,7 @@ def main():
         #Loading an img
     sword = pygame.image.load("fire_sword.png")
     sword = sword.convert_alpha()
-    sword = pygame.transform.scale(sword, (100, 200))
+    sword = pygame.transform.scale(sword, (50, 150))
     
         #Img variables
     sword_x = 0
@@ -27,6 +27,8 @@ def main():
         #A - Assign values to key variables
     clock = pygame.time.Clock()
     keepGoing = True
+    dx = 5
+    dy = 5
     
         #L - Set up main loop
     while keepGoing:
@@ -40,15 +42,22 @@ def main():
                 keepGoing = False
         
             #sword value
-        #sword_x += 5
-        
         #check boundaries
-        if sword_x < screen.get_width():
-            sword_x += 5
-        if sword_x >= screen.get_width():
-            sword_x -= 200
+        if sword_x > screen.get_width():
+            dx = -5
+            
+        if sword_x < 0:
+            dx = 5
         
-                
+        if sword_y > screen.get_height():
+            dy = -5
+        
+        if sword_y < 0:
+            dy = + 5
+        #print(f"{sword_x=}, {dx=}")
+        sword_x += dx
+        sword_y += dy
+
         #R - Refresh display
         screen.blit(background, (0, 0))
         screen.blit(sword, (sword_x, sword_y))
