@@ -1,5 +1,6 @@
 #IDEA / ALTER model
 import pygame
+import random
 
 def main():
     #I - Import and initialize
@@ -43,17 +44,17 @@ def main():
         
             #sword value
         #check boundaries
-        if sword_x > screen.get_width():
-            dx = -5
+        if (sword_x + 50) > screen.get_width():
+            dx = random.randint(-15, -2)
             
         if sword_x < 0:
-            dx = 5
+            dx = random.randint(2, 15)
         
-        if sword_y > screen.get_height():
-            dy = -5
+        if (sword_y + 150) > screen.get_height():
+            dy = random.randint(-15, -2)
         
         if sword_y < 0:
-            dy = + 5
+            dy = + random.randint(2, 15)
         #print(f"{sword_x=}, {dx=}")
         sword_x += dx
         sword_y += dy
